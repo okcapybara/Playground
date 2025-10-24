@@ -1,19 +1,20 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import IntroAnimation from './components/IntroAnimation'
-import ExhibitionGallery from './components/ExhibitionGallery'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
+import Home from './pages/Home';
+import ProjectDetail from './pages/ProjectDetail';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="App">
-      <IntroAnimation />
-      <ExhibitionGallery />
-    </div>
-  )
+    <Router>
+      <div className="min-h-screen bg-background">
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/project/:id" element={<ProjectDetail />} />
+        </Routes>
+      </div>
+    </Router>
+  );
 }
 
-export default App
+export default App;
